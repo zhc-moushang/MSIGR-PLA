@@ -1,4 +1,4 @@
-# GRASP-PLA: Dynamic Graph Alignment across Scales for Protein-Ligand Affinity
+# MMSDI-PLA: Dynamic Graph Alignment across Scales for Protein-Ligand Affinity
 
 
 
