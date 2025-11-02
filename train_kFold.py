@@ -1,7 +1,7 @@
 from dataset import TestbedDataset
 from torch_geometric.loader import DataLoader
 from torch import nn, optim
-from model import MMPDIM_DTA
+from model import MMSDI_PLA
 import torch
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
@@ -92,7 +92,7 @@ writer = SummaryWriter(path)
 kfold = KFold(n_splits=10, shuffle=True, random_state=42)
 for fold, (train_index, val_index) in enumerate(kfold.split(data_set)):
 
-    model = MMPDIM_DTA().to(device)
+    model = MMSDI_PLA().to(device)
     optimizer = optim.AdamW(model.parameters(), lr=0.001)
     loss_fn = nn.MSELoss(reduction='sum')
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=50)
@@ -111,7 +111,7 @@ for fold, (train_index, val_index) in enumerate(kfold.split(data_set)):
 
 
 
-model = MMPDIM_DTA().to(device)
+model = MMSDI_PLA().to(device)
 loss_fn = nn.MSELoss(reduction='sum')
 print()
 with open(path / 'result.txt', 'w') as f:
