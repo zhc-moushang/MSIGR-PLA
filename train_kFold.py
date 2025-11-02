@@ -71,23 +71,15 @@ def test(model: nn.Module, test_loader, loss_function, device,val_sph_dic):
 
     return evaluation
 
-def setup_seed(seed):
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    np.random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-seed=42
-setup_seed(seed)
+
 device = torch.device("cuda")
-file_path = '/home/zhc/pycharm/Gradformer_DTA_new/MMPDIM-DTA/data'
+file_path = 'MMSDI_PLA/data'
 sph_dic      = torch.load(file_path + '/processed/sph_zong.pt')
 data_set = TestbedDataset(root=file_path, dataset='train_and_val')
 test2016_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2016'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
 test2013_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2013'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
 csar_dataloader =     DataLoader(TestbedDataset(root=file_path, dataset='CSAR'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
-path = Path(f'result/MMPDIM_DTA_{datetime.now()}_{seed}')
+path = Path(f'result/MMSDI_PLA_{datetime.now()}_{seed}')
 writer = SummaryWriter(path)
 kfold = KFold(n_splits=10, shuffle=True, random_state=42)
 for fold, (train_index, val_index) in enumerate(kfold.split(data_set)):
