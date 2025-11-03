@@ -1,4 +1,4 @@
-# MMSDI-PLA: Dynamic Graph Alignment across Scales for Protein-Ligand Affinity
+# MSIGR-PLA: Integrating Multi-Scale Interaction and Global Representations for Protein–Ligand Affinity Prediction
 
 
 
