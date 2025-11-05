@@ -3,8 +3,9 @@
 
 
   <div align="center">
-  <img src="https://raw.githubusercontent.com/zhc-moushang/MSIGR-PLA/main/Fig/model.png" width="800">
+  <img src="https://raw.githubusercontent.com/zhc-moushang/MSIGR-PLA/main/Fig/model.png" width="600">
   </div>
+  
 ## 1. Conda Environment
 We provide commands for creating conda environments so you can replicate our work:
 ```
