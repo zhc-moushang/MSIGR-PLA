@@ -8,9 +8,9 @@ from torch.nn import LeakyReLU
 from torch_geometric.nn import global_mean_pool,GCNConv
 from Attention import MultiheadAttention
 
-class MMSDI_PLA(nn.Module):
+class MSIGR-PLA(nn.Module):
     def __init__(self, ):
-        super(MMSDI_PLA, self).__init__()
+        super(MSIGR-PLA, self).__init__()
         dropout = 0.3
         self.protein_module = Protein_module(input_dim=128, hidden_dim=128,output_dim=128)
         self.Gradformer = Gradformer(num_layers=2,num_heads=4,pe_origin_dim=20,pe_dim=36,hidden_dim=128,dropout=dropout)
