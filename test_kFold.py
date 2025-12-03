@@ -1,7 +1,7 @@
 from dataset import TestbedDataset
 from torch_geometric.loader import DataLoader
 from torch import nn
-from model import MMSDI_PLA
+from model import MSIGR-PLA
 import torch
 import numpy as np
 import metrics
@@ -56,17 +56,17 @@ def test(model: nn.Module, test_loader, loss_function, device,val_sph_dic):
     return evaluation
 
 device = torch.device("cuda")
-file_path = '/MMSDI_PLA/data'
+file_path = '/MSIGR-PLA/data'
 sph_dic      = torch.load(file_path + '/processed/sph_zong.pt')
 batch_size = 1
 test2016_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2016'),batch_size=batch_size ,shuffle=True,follow_batch=['ESM'])
 test2013_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2013'),batch_size=batch_size ,shuffle=True,follow_batch=['ESM'])
 csar_dataloader =     DataLoader(TestbedDataset(root=file_path, dataset='CSAR'),batch_size=batch_size ,shuffle=True,follow_batch=['ESM'])
 
-model = MMSDI_PLA().to(device)
+model = MSIGR-PLA().to(device)
 loss_fn = nn.MSELoss(reduction='sum')
 
-result_path = 'MMSDI_PLA/best_model/'
+result_path = 'MSIGR-PLA/best_model/'
 with open(result_path + 'result.txt', 'w') as f:
     f.write('CI,RMSE,R2,MSE,MAE,SD,Pcc,AUC\n')
     f.write('test2016\n')
