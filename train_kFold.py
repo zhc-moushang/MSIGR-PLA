@@ -1,7 +1,7 @@
 from dataset import TestbedDataset
 from torch_geometric.loader import DataLoader
 from torch import nn, optim
-from model import MMSDI_PLA
+from model import MSIGR-PLA
 import torch
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
@@ -73,18 +73,18 @@ def test(model: nn.Module, test_loader, loss_function, device,val_sph_dic):
 
 
 device = torch.device("cuda")
-file_path = 'MMSDI_PLA/data'
+file_path = 'MSIGR-PLA/data'
 sph_dic      = torch.load(file_path + '/processed/sph_zong.pt')
 data_set = TestbedDataset(root=file_path, dataset='train_and_val')
 test2016_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2016'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
 test2013_dataloader = DataLoader(TestbedDataset(root=file_path, dataset='test2013'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
 csar_dataloader =     DataLoader(TestbedDataset(root=file_path, dataset='CSAR'),batch_size=128 ,shuffle=False,follow_batch=['ESM'])
-path = Path(f'result/MMSDI_PLA_{datetime.now()}_{seed}')
+path = Path(f'result/MSIGR-PLA_{datetime.now()}_{seed}')
 writer = SummaryWriter(path)
 kfold = KFold(n_splits=10, shuffle=True, random_state=42)
 for fold, (train_index, val_index) in enumerate(kfold.split(data_set)):
 
-    model = MMSDI_PLA().to(device)
+    model = MSIGR-PLA().to(device)
     optimizer = optim.AdamW(model.parameters(), lr=0.001)
     loss_fn = nn.MSELoss(reduction='sum')
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=50)
@@ -103,7 +103,7 @@ for fold, (train_index, val_index) in enumerate(kfold.split(data_set)):
 
 
 
-model = MMSDI_PLA().to(device)
+model = MSIGR-PLA().to(device)
 loss_fn = nn.MSELoss(reduction='sum')
 print()
 with open(path / 'result.txt', 'w') as f:
